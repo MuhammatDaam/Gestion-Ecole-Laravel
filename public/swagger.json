@@ -1,0 +1,14 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de gestion des ecoles",
+        "version": "1.0.0",
+        "description": "API pour gérer les presences des eleves dans les ecoles"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8845",
+            "description": "Serveur Local"
+        }
+    ]
+}
