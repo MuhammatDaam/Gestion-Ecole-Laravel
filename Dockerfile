@@ -1,57 +1,60 @@
-# Utiliser l'image PHP officielle avec extensions
 FROM php:8.3-fpm
 
-# Installer des dépendances
+# Installation des dépendances système et des extensions PHP
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    libzip-dev \
+    zip \
+    unzip \
+    git \
+    curl \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    curl \
-    unzip \
-    git \
     libpq-dev \
-    libzip-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip gd mbstring exif pcntl bcmath
+    nginx \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql pdo_pgsql zip opcache
 
-# Installer Composer
+# Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Définir le répertoire de travail
+# Définition du répertoire de travail
 WORKDIR /var/www
 
-# Copier les fichiers du projet dans le conteneur
-COPY . .
+# Copie des fichiers du projet
+COPY . /var/www
 
-# Configurer les permissions sur le répertoire de travail
-RUN chown -R www-data:www-data /var/www
+# Installation des dépendances PHP
+RUN composer install --optimize-autoloader --no-dev
 
-# Installer les dépendances du projet
-RUN composer install 
+# Configuration des permissions
+# RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+#     && chmod -R 777 /var/www/storage /var/www/bootstrap/cache
+RUN mkdir -p /var/www/storage/logs /var/www/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 777 /var/www/storage /var/www/bootstrap/cache
 
-# Crée le fichier firebase-key.json à partir de la variable d'environnement base64
-RUN echo $FIREBASE_KEY_BASE64 | base64 -d > /var/www/firebase-key.json
 
+# Configuration de Nginx
+#COPY nginx/default.conf /etc/nginx/sites-available/default
+#RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-# Copier le fichier d'environnement et générer la clé
-COPY .env.example .env
-RUN php artisan key:generate
+# COPY env.example .env and generate key
+# COPY .env.example .env
+# RUN php artisan key:generate
 
-# Configurer les permissions sur le stockage et le cache
-RUN chown -R www-data:www-data /var/www/storage \
-    && chmod -R 775 /var/www/storage \
-    && chmod -R 775 /var/www/bootstrap/cache
+# Nettoyage
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-    
+# Exposition du port
+EXPOSE 80
 
-# Exposer le port
-EXPOSE $PORT
-# Copie le script de démarrage
+# Copie et configuration du script de démarrage
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-# Commande pour démarrer l'application
+# Commande de démarrage
 CMD php artisan serve --host=0.0.0.0 --port=8845
+# CMD ["sh", "/usr/local/bin/start.sh"]
+
+
