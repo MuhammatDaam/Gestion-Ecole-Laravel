@@ -40,8 +40,8 @@ RUN mkdir -p /var/www/storage/logs /var/www/bootstrap/cache \
 #RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # COPY env.example .env and generate key
-COPY .env .
-RUN php artisan key:generate
+ COPY .env .
+# RUN php artisan key:generate
 
 # Nettoyage
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
