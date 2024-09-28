@@ -5,12 +5,6 @@
       "version": "1.0.0",
       "description": "API pour gérer les présences des élèves dans les écoles"
     },
-    "servers": [
-      {
-        "url": "http://localhost:8845/api", 
-        "description": "Serveur Local"
-      }
-    ],
     "components": {
       "securitySchemes": {
         "bearerAuth": {
