@@ -29,15 +29,19 @@ RUN composer install --optimize-autoloader --no-dev
 
 # Configuration des permissions
 # RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
-#     && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
-
-    RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+#     && chmod -R 777 /var/www/storage /var/www/bootstrap/cache
+RUN mkdir -p /var/www/storage/logs /var/www/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 777 /var/www/storage /var/www/bootstrap/cache
 
 
 # Configuration de Nginx
 COPY nginx/default.conf /etc/nginx/sites-available/default
 RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# COPY env.example .env and generate key
+# COPY .env.example .env
+# RUN php artisan key:generate
 
 # Nettoyage
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

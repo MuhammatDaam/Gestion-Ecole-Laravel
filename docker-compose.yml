@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: GestionEcole_app
     volumes:
       - .:/var/www
-      - ./gestion-ecole-laravel-firebase.json:/var/www/gestion-ecole-laravel-firebase.json
+      - ./gestion-ecole-laravel-firebase.json:/home/dame/Documents/framework/Laravel/Gestion-Ecole-Laravel11/gestion-ecole-laravel-firebase.json
     networks:
       - app-network
     depends_on:
@@ -17,7 +15,7 @@ services:
 
   webserver:
     image: nginx:latest
-    container_name: laravel_nginx
+    container_name: GestionEcole_nginx
     ports:
       - "8845:80"  # Changé de 8844 à 8845
     volumes:
@@ -44,6 +42,7 @@ services:
   postgres:
     image: postgres:latest
     container_name: laravel_postgres
+    restart: always
     environment:
       POSTGRES_USER: dame
       POSTGRES_PASSWORD: motivation

@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -111,5 +115,11 @@ return [
     */
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
+    'passport' => [
+    'private_key' => env('PASSPORT_PRIVATE_KEY', storage_path('oauth-private.key')),
+    'public_key' => env('PASSPORT_PUBLIC_KEY', storage_path('oauth-public.key')),
+],
+
 
 ];
