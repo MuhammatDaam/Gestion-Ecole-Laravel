@@ -8,21 +8,17 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ReferentielController;
 use App\Http\Controllers\UserFirebaseController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:api');
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+
+Route::middleware('auth:api')->group(function () {
 
 
 Route::prefix('v1/auth')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
 });
-Route::get('/users', [UserFirebaseController::class, 'getAllUsers']);
 
 Route::prefix('v1')->group(function () {
     Route::post('/users', [UserFirebaseController::class, 'create']);
+    Route::get('/users', [UserFirebaseController::class, 'getAllUsers']);
     Route::patch('/users/{id}', [UserFirebaseController::class, 'updateUser']);
     Route::delete('/users/{id}', [UserFirebaseController::class, 'deleteUser']);
     Route::get('/users/{id}', [UserFirebaseController::class, 'findUser']);
@@ -33,7 +29,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/users/upload-image', [UserFirebaseController::class, 'uploadImageToStorage']);
 });
 
-
+});
 
 // // Ajouter la ligne de code suivante à la définition des routes dans le fichier routes/api.php
 // Route::prefix('v1')->group(function () {
