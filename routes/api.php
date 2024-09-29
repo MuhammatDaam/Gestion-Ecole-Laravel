@@ -9,7 +9,7 @@ use App\Http\Controllers\ReferentielController;
 use App\Http\Controllers\UserFirebaseController;
 
 
-Route::middleware('auth:api')->group(function () {
+// Route::middleware('auth:api')->group(function () {
 
 
 Route::prefix('v1/auth')->group(function () {
@@ -29,7 +29,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/users/upload-image', [UserFirebaseController::class, 'uploadImageToStorage']);
 });
 
-});
+// });
 
 // // Ajouter la ligne de code suivante à la définition des routes dans le fichier routes/api.php
 // Route::prefix('v1')->group(function () {
