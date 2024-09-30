@@ -825,7 +825,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Promotion"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "discount": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
               }
             },
             "multipart/form-data": {
@@ -835,10 +852,16 @@
                   "name": {
                     "type": "string"
                   },
-                  "status": {
+                  "start_date": {
                     "type": "string"
                   },
-                  "referentiel_id": {
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "discount": {
+                    "type": "number"
+                  },
+                  "description": {
                     "type": "string"
                   }
                 }
@@ -852,7 +875,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Promotion"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "start_date": {
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -884,7 +924,24 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Promotion"
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "start_date": {
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "type": "string"
+                      },
+                      "discount": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
@@ -917,7 +974,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Promotion"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "start_date": {
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -946,7 +1020,24 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Promotion"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "discount": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
               }
             },
             "multipart/form-data": {
@@ -956,10 +1047,16 @@
                   "name": {
                     "type": "string"
                   },
-                  "status": {
+                  "start_date": {
                     "type": "string"
                   },
-                  "referentiel_id": {
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "discount": {
+                    "type": "number"
+                  },
+                  "description": {
                     "type": "string"
                   }
                 }
@@ -973,7 +1070,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Promotion"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "start_date": {
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -1028,7 +1142,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Promotion"
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "start_date": {
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "type": "string"
+                    },
+                    "discount": {
+                      "type": "number"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -1201,7 +1332,24 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Promotion"
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "start_date": {
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "type": "string"
+                      },
+                      "discount": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
@@ -1261,7 +1409,24 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Promotion"
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "start_date": {
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "type": "string"
+                      },
+                      "discount": {
+                        "type": "number"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               }
